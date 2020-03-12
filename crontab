@@ -1,0 +1,5 @@
+
+SHELL=/bin/bash
+BASH_ENV=/var/www/container.env
+
+* * * * * root echo "Simple is not easy" >> /var/log/cron.log
