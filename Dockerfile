@@ -5,8 +5,7 @@ RUN apt-get update && apt-get install -y libmcrypt-dev cron\
     && docker-php-ext-install pdo_mysql
 
 ADD crontab /etc/cron.d/laravel-cron
-ENV TZ Europe/Rome
-ADD timezone /etc/timezone
+RUN /bin/ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 RUN chmod 0644 /etc/cron.d/laravel-cron
 
 RUN touch  /var/log/cron.log
